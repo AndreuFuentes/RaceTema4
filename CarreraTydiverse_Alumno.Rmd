@@ -141,6 +141,12 @@ glimpse(cran)
 
 4. Elige únicamente las variables `ip_id, package, country`
 ```{r}
+# Seleccionar solo las columnas ip_id, package y country
+cran_selected <- cran %>%
+  select(ip_id, package, country)
+
+# Ver el resultado
+head(cran_selected)
 
 ```
 5. Elige todas las variables entre `r_arch y country` 
