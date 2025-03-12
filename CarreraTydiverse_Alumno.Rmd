@@ -176,6 +176,10 @@ head(cran_plotly)
 ```
 6. Elige aquellas descargas realizadas desde España (ES), con versiones de R superiores a la 3.4.0
 ```{r}
+cran_es <- cran %>%
+  filter(country == "ES", r_version > "3.4.0")
+
+head(cran_es)
 
 ```
 
