@@ -168,16 +168,15 @@ head(cran_excluded)
 ```
 6. Elige aquellos registros en los que se haya descargado el paquete `plotly`, desde un sistema que ejecuta la versión de R 3.5.1
 ```{r}
+cran_plotly <- cran %>%
+  filter(package == "plotly", r_version == "3.5.1")
+
+head(cran_plotly)
 
 ```
 6. Elige aquellas descargas realizadas desde España (ES), con versiones de R superiores a la 3.4.0
 ```{r}
-# Filtrar registros donde el país sea "ES" y la versión de R sea mayor que "3.4.0"
-cran_es <- cran %>%
-  filter(country == "ES", r_version > "3.4.0")
 
-# Ver el resultado
-head(cran_es)
 ```
 
 7. Elige aquellas descargas realizadas desde España (ES), o Portugal (PT).
