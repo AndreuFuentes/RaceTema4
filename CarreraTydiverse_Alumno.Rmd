@@ -124,14 +124,11 @@ cran <- as_tibble(mydf)
 # Eliminar el data frame original para liberar memoria
 rm(mydf)
 
+
 ```
 3. Una ventaja de trasformar en tibble es la visualización. Escribe directamente el nombre de la variable y observa la visualización. Posteriormente usa la función `glimpse` sobre `cran` y observa el resultado.
 ```{r}
-# Visualizar el tibble directamente
-cran
 
-# Usar la función glimpse para obtener un resumen detallado
-glimpse(cran)
 
 ```
 # dplyr
@@ -139,42 +136,21 @@ glimpse(cran)
 
 4. Elige únicamente las variables `ip_id, package, country`
 ```{r}
-# Seleccionar solo las columnas ip_id, package y country
-cran_selected <- cran %>%
-  select(ip_id, package, country)
 
-# Ver el resultado
-head(cran_selected)
 ```
 5. Elige todas las variables entre `r_arch y country` 
 ```{r}
-# Seleccionar todas las columnas desde r_arch hasta country
-cran_range <- cran %>%
-  select(r_arch:country)
 
-# Ver el resultado
-head(cran_range)
 ```
 5. Puedes usar el signo (-) para no coger una columna determinada. Selecciona todas las columnas menos las que están entre `date y size` 
 ```{r}
-# Seleccionar todas las columnas excepto las que están entre date y size
-cran_excluded <- cran %>%
-  select(-(date:size))
-
-# Ver el resultado
-head(cran_excluded)
 
 
 
 ```
 6. Elige aquellos registros en los que se haya descargado el paquete `plotly`, desde un sistema que ejecuta la versión de R 3.5.1
 ```{r}
-# Filtrar registros donde el paquete sea "plotly" y la versión de R sea "3.5.1"
-cran_plotly <- cran %>%
-  filter(package == "plotly", r_version == "3.5.1")
 
-# Ver el resultado
-head(cran_plotly)
 ```
 6. Elige aquellas descargas realizadas desde España (ES), con versiones de R superiores a la 3.4.0
 ```{r}
@@ -188,20 +164,14 @@ head(cran_es)
 
 7. Elige aquellas descargas realizadas desde España (ES), o Portugal (PT).
 ```{r}
-# Filtrar registros donde el país sea "ES" o "PT"
-cran_es_pt <- cran %>%
-  filter(country %in% c("ES", "PT"))
 
-# Ver el resultado
-head(cran_es_pt)
 
 
 ```
 
 8. Elige aquellas descargas cuyo tamaño supera los 100500 bytes desde un sistema operativo  `linux-gnu`.
 ```{r}
-cran_tamano <- cran%>%
-  filter()
+
 ```
 9. Elige aquellas descargas en las que la versión del sistema operativo no está vacía.
 ```{r}
