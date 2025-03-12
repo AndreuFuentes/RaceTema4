@@ -315,10 +315,16 @@ pack_sum
 22. Muestra el 1% de los paquetes que han sido más descargados. Para ello puedes utilizar la función `quantile(????, probs=0.99)`. Siendo ??? la variable de interés, que te permitirá estimar el umbral. Los valores por encima serán los que nos interesen. Almacena estos paquetes **top descargas** en la variable `top_counts`. **NOTA: De ahora en adelante concatena todas las operaciones partiendo del elemento `cran`, usando _pipes_**.
 ```{r}
 
+# Calcular el umbral del percentil 99 para count
+umbral <- quantile(pack_sum$count, probs = 0.99)
 
+# Filtrar los paquetes que superan el umbral y almacenarlos en top_counts
+top_counts <- cran %>%
+  group_by(package) %>%  # Agrupar por paquete
+  summarise(count = n()) %>%  # Calcular el número de descargas por paquete
+  filter(count > umbral)  # Filtrar los paquetes que superan el umbral
 
-
-
+top_counts
 
 ```
 23. Repite el apartado anterior utilizando **pipes** para que finalmente el resultado se ordene, en orden descendente, según el número de descargas (`count`) y se almacene el la variable `top_counts_sorted`
