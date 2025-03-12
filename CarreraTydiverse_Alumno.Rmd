@@ -284,7 +284,9 @@ by_package_ungrouped <- by_package %>%
 
 20. Usa la función `summarise` sobre  el elemento agrupado y calcula  el valor medio de la variable `size`. Observa el efecto del agrupamiento en el resultado.
 ```{r}
-
+mean_size_package <- by_package %>%
+  summarise(mean_size = mean(size, na.rm = TRUE))
+mean_size_package
 ```
 21. Para el agrupamiento creado calcula: 
 + . count = n()
