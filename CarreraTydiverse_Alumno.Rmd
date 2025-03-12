@@ -330,12 +330,14 @@ top_counts
 23. Repite el apartado anterior utilizando **pipes** para que finalmente el resultado se ordene, en orden descendente, según el número de descargas (`count`) y se almacene el la variable `top_counts_sorted`
 ```{r}
 
+# Calcular el 1% de los paquetes más descargados y ordenar en orden descendente
+top_counts_sorted <- cran %>%
+  group_by(package) %>%  # Agrupar por paquete
+  summarise(count = n()) %>%  # Calcular el número de descargas por paquete
+  filter(count > quantile(count, probs = 0.99)) %>%  # Filtrar los paquetes que superan el umbral
+  arrange(desc(count))  # Ordenar en orden descendente según count
 
-
-
-
-
-
+top_counts_sorted
 
 
 ```
